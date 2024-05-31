@@ -1,0 +1,155 @@
+/* Estilos generales */
+.Parte1 {
+    max-width: 1200px;
+    margin: 50px auto 0 auto; /* Aumenta el espacio en la parte superior */
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Parte1 h1 {
+    color: #4a4a4a;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* Estilos para los contenedores de los pasos */
+.pasos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Espacio entre cada paso */
+}
+
+.paso {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden; /* Asegura que el borde redondeado se aplique a las imágenes también */
+}
+
+.contenido-texto {
+    padding: 20px;
+    width: 60%;
+}
+
+.contenido-texto h2 {
+    color: rgb(128, 0, 128); /* Color púrpura intenso */
+    margin-bottom: 15px;
+}
+
+.contenido-texto p {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 20px;
+}
+
+.contenido-texto button {
+    background-color: rgb(128, 0, 128); /* Color púrpura intenso */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contenido-texto button:hover {
+    background-color: rgb(102, 0, 102); /* Un púrpura más oscuro para el estado hover */
+}
+
+.contenido-imagen {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4; /* Fondo ligeramente diferente para destacar */
+}
+
+.contenido-imagen img {
+    width: auto; /* Ajusta esto según el tamaño de tus imágenes */
+    max-height: 200px; /* Ajusta esto según el tamaño de tus imágenes */
+    padding: 20px; /* Espacio alrededor de la imagen */
+}
+
+/* Estilos para la sección de información adicional */
+.info-adicional {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    max-width: 80%;
+}
+
+.info-adicional > div {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+}
+
+.info-adicional h2, .info-adicional h3 {
+    color: #6a0dad; /* Color púrpura */
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 20px; /* Tamaño de fuente aumentado */
+}
+
+.info-adicional p {
+    color: #555; /* Color de texto oscuro */
+    margin-bottom: 10px;
+}
+
+.info-adicional ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.info-adicional li {
+    margin-bottom: 5px;
+}
+
+/* Estilos para los botones */
+.contenido-texto button {
+    background-color: #6a0dad; /* Púrpura */
+    color: #fff; /* Texto blanco */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+
+.contenido-texto button:hover {
+    background-color: #4c075b; /* Púrpura más oscuro en hover */
+}
+
+/* Estilos para la animación del botón */
+@keyframes pulseButton {
+    0% {
+        transform: scale(1);
+        background-color: #6a0dad; /* Púrpura original */
+    }
+    50% {
+        transform: scale(1.1);
+        background-color: #7e14a0; /* Púrpura más claro */
+    }
+    100% {
+        transform: scale(1);
+        background-color: #6a0dad;
+    }
+}
+
+#boton1 {
+    animation: pulseButton 2s infinite;
+}
+
+

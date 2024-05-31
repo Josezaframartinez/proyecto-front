@@ -1,0 +1,94 @@
+<div class="contenedor-formularios">
+  <ng-template #loginForm>
+    <div class="formulario">
+      <form (ngSubmit)="login()" #loginFormRef="ngForm">
+        <fieldset>
+          <legend>Iniciar Sesión</legend>
+          <label for="correo">Correo Electrónico: 
+            <input type="email" [(ngModel)]="loginData.email" name="correo" required>
+          </label>
+          <div *ngIf="loginFormRef.submitted && loginFormRef.controls['correo']?.invalid">
+            <small class="error">Correo electrónico es requerido y debe ser válido.</small>
+          </div>
+          <br>
+          <label for="contraseña">Contraseña: 
+            <input type="password" [(ngModel)]="loginData.password" name="contraseña" required>
+          </label>
+          <div *ngIf="loginFormRef.submitted && loginFormRef.controls['contraseña']?.invalid">
+            <small class="error">Contraseña es requerida.</small>
+          </div>
+          <br>
+          <button type="submit">Iniciar Sesión</button>
+          <button type="button" (click)="toggleForms()">Registrarse</button>
+        </fieldset>
+      </form>
+    </div>
+  </ng-template>
+
+  <ng-template #registroForm>
+    <div class="formulario">
+      <form (ngSubmit)="registro()" #registroFormRef="ngForm">
+        <fieldset>
+          <legend>Registrarse</legend>
+          <label for="nombre">Nombre: 
+            <input type="text" [(ngModel)]="registroData.nombre" name="nombre" required>
+          </label>
+          <div *ngIf="registroFormRef.submitted && registroFormRef.controls['nombre']?.invalid">
+            <small class="error">Nombre es requerido.</small>
+          </div>
+          <br>
+          <label for="apellido">Apellido: 
+            <input type="text" [(ngModel)]="registroData.apellido" name="apellido" required>
+          </label>
+          <div *ngIf="registroFormRef.submitted && registroFormRef.controls['apellido']?.invalid">
+            <small class="error">Apellido es requerido.</small>
+          </div>
+          <br>
+          <label for="email">Correo Electrónico: 
+            <input type="email" [(ngModel)]="registroData.email" name="email" required>
+          </label>
+          <div *ngIf="registroFormRef.submitted && registroFormRef.controls['email']?.invalid">
+            <small class="error">Correo electrónico es requerido y debe ser válido.</small>
+          </div>
+          <br>
+          <label for="genero">Género:
+            <select [(ngModel)]="registroData.genero" name="genero" required>
+              <option value="">Seleccione</option>
+              <option value="masculino">Masculino</option>
+              <option value="femenino">Femenino</option>
+            </select>
+          </label>
+          <div *ngIf="registroFormRef.submitted && registroFormRef.controls['genero']?.invalid">
+            <small class="error">Género es requerido.</small>
+          </div>
+          <br>
+          <label for="password">Contraseña: 
+            <input type="password" [(ngModel)]="registroData.password" name="password" required minlength="8">
+          </label>
+          <div *ngIf="registroFormRef.submitted && registroFormRef.controls['password']?.invalid">
+            <small class="error">Contraseña es requerida y debe tener al menos 8 caracteres.</small>
+          </div>
+          <br>
+          <label for="confirmar_password">Confirmar Contraseña: 
+            <input type="password" [(ngModel)]="registroData.confirmPassword" name="confirmPassword" required>
+          </label>
+          <div *ngIf="registroFormRef.submitted && registroData.password !== registroData.confirmPassword">
+            <small class="error">Las contraseñas no coinciden.</small>
+          </div>
+          <br>
+          <label for="numero">Número: 
+            <input type="text" [(ngModel)]="registroData.numero" name="numero" required pattern="^\d{10}$">
+          </label>
+          <div *ngIf="registroFormRef.submitted && registroFormRef.controls['numero']?.invalid">
+            <small class="error">Número de teléfono es requerido y debe tener 10 dígitos.</small>
+          </div>
+          <br>
+          <button type="submit">Registrar</button>
+          <button type="button" (click)="toggleForms()">Login</button>
+        </fieldset>
+      </form>
+    </div>
+  </ng-template>
+
+  <div *ngIf="showingLogin; then loginForm else registroForm"></div>
+</div>

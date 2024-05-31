@@ -1,0 +1,41 @@
+<p>alert works!</p>
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AlertService } from '../services/alert.service';
+
+@Component({
+  selector: 'app-alert',
+  template: `
+    <div *ngIf="alert" [ngClass]="{'success': alert.type === 'success', 'error': alert.type === 'error'}">
+      {{ alert.message }}
+      <button (click)="closeAlert()">X</button>
+    </div>
+  `,
+  styles: [`
+    .success { color: green; }
+    .error { color: red; }
+    div { position: fixed; top: 0; }
+  `]
+})
+export class AlertComponent implements OnDestroy {
+  alert: {type: string, message: string};
+  private alertSub: Subscription;
+
+  constructor(private alertService: AlertService) {
+    this.alertSub = this.alertService.alerts.subscribe(alert => {
+      this.alert = alert;
+      if (alert) {
+        // Cierra la alerta automáticamente después de 3 segundos
+        setTimeout(() => this.closeAlert(), 3000);
+      }
+    });
+  }
+
+  closeAlert() {
+    this.alertService.closeAlert();
+  }
+
+  ngOnDestroy() {
+    this.alertSub.unsubscribe();
+  }
+}

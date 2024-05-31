@@ -1,0 +1,32 @@
+<div class="container-1">
+  <nav class="navbar-menu">
+    <a href="index.html" class="navbar-brand">
+      <img src="../assets/Icono.png" alt="Icono_Inicio" class="navbar-logo imagen-logo">
+    </a>
+    <ul>
+      <li id="productos"><a href="/productos" data-text="Remates"><span>Remates</span></a>
+        <ul>
+          <li><a href="#" data-text="Joyería"><span>Joyería</span></a></li>
+          <li><a href="#" data-text="Tecnología"><span>Tecnología</span></a></li>
+          <li><a href="#" data-text="Relojes"><span>Relojes</span></a></li>
+          <li><a href="#" data-text="Videojuegos"><span>Videojuegos</span></a></li>
+        </ul>
+      </li>
+      <li id="acerca"><a href="/nosotros" data-text="Nosotros"><span>Nosotros</span></a></li>
+      <li id="acerca"><a href="/pasos" data-text="Pasos"><span>Pasos</span></a></li>
+      <li id="acerca"><a href="/Cotizar" data-text="Cotiza en línea"><span>Cotiza en línea</span></a></li>
+      <li *ngIf="!isLoggedIn"><a href="/iniciosesion"><img src="../assets/logoinicio.png" alt="Inicio de sesión" class="inicio-de-sesion"></a></li>
+      <li *ngIf="isLoggedIn" class="dropdown">
+        <a href="#" class="dropbtn">
+          <img [src]="userPhoto" alt="Foto de usuario" class="navbar-logo imagen-logo">
+          Hola, {{ userName }}!
+        </a>
+        <ul class="dropdown-content">
+          <li><a href="/perfil">Perfil</a></li>
+          <li><a href="#" (click)="logout()">Cerrar sesión</a></li>
+          <li *ngIf="perfil === 2"><a href="/ProductosHandler">ProductosHandler</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>

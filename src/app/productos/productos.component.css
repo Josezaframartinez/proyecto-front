@@ -1,0 +1,30 @@
+/* Contenedores principales para íconos y categorías */
+.iconos, .categorias {
+    margin-top: 20px; /* Espacio entre diferentes secciones o contenedores */
+    display: grid;
+    color: #333; /* Color de texto para elementos internos, si es que hay */
+    grid-template-columns: repeat(4, 1fr); /* Cuatro columnas de igual tamaño */
+    grid-gap: 20px; /* Espacio entre elementos de la cuadrícula */
+    background-color: #f8f8f8; /* Color de fondo claro */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para la profundidad */
+}
+
+/* Estilos para elementos individuales dentro de los contenedores */
+.iconos > div, .categorias > div {
+    display: flex;
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+    background-color: #ffffff; /* Fondo blanco para los elementos */
+    color: #333; /* Color de texto oscuro para contraste, si es que hay texto */
+    padding: 20px; /* Espacio interno */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra suave para cada ítem */
+    transition: transform 0.3s ease; /* Transición suave para efectos de mouse */
+}
+
+/* Efectos de hover para agregar interactividad */
+.iconos > div:hover, .categorias > div:hover {
+    transform: translateY(-5px); /* Efecto 'pop' al pasar el ratón */
+}

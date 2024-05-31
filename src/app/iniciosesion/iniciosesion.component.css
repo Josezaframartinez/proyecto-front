@@ -1,0 +1,141 @@
+/* General body styling for better spacing around the table */
+body {
+    margin: 20px;
+    font-family: Arial, sans-serif; /* Modern font */
+    color: #333; /* Soft black for text */
+}
+
+/* Contenedor principal para formularios */
+.contenedor-formularios {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 120px; /* Adds top space if necessary, adjust as needed */
+    background-color: #ffffff; /* Soft background color */
+}
+
+/* General styles for all forms */
+.formulario {
+    background-color: #ffffff; /* White background for contrast */
+    padding: 40px;
+    border-radius: 15px; /* Rounded corners for a smooth appearance */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for a refined effect */
+    width: 450px; /* Fixed width for all forms */
+    max-width: 95%; /* Maximum width to ensure responsiveness */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transitions */
+    transform-style: preserve-3d; /* Enables 3D transformations */
+    perspective: 1500px; /* 3D perspective depth for effects */
+}
+
+/* Styles for titles, labels, input fields, and buttons */
+legend {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 16px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="radio"],
+input[type="submit"],
+button {
+    width: calc(100% - 24px);
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.2s; /* Smooth transition for focus */
+    box-sizing: border-box;
+}
+
+input[type="submit"],
+button {
+    background-color: purple;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: #760068;
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.campo-error {
+    border: 2px solid red; /* Error style for input fields */
+}
+
+.custom-snackbar {
+    background-color: #323232; /* Dark gray background for contrast */
+    color: #ffffff; /* White text for readability */
+    font-family: 'Arial', sans-serif; /* Custom font, ensuring it's readable */
+    border-radius: 4px; /* Rounded corners for a smoother look */
+    padding: 12px 24px; /* Adequate padding for content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+/* Ensure no spacing between cells */
+table.products-table th, table.products-table td {
+    padding: 0; /* Removes padding around cells */
+    border: none; /* Removes borders around cells */
+}
+
+/* Styles for the container holding the `+` button and action buttons */
+.action-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ensures it fills the cell */
+}
+
+.add-button {
+    width: 100%; /* Asegura que el botón llene el ancho de su contenedor */
+    height: 500px; /* Establece la altura como necesites */
+    background-color: green; /* Estilo para que coincida con tu diseño */
+    color: white;
+    padding: 100px 0; /* Agrega padding vertical dentro del botón */
+    border: none; /* Elimina cualquier borde por defecto */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar el ratón sobre el botón */
+    box-sizing: border-box; /* Incluye el padding en el cálculo de la altura del botón */
+}
+
+
+.button {
+    width: 100%; /* Full width for each action button */
+    margin: 0; /* Remove margin to prevent spacing between buttons */
+}
+
+.button.edit-button {
+    background-color: red;
+}
+
+.button.delete-button {
+    background-color: blue;
+}
+
+.button.upload-button {
+    background-color: yellow;
+}
+
+/* Additional styling for hover effects */
+.button:hover {
+    opacity: 0.8;
+}

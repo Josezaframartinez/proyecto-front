@@ -1,0 +1,112 @@
+<div class="add-button-container" [ngClass]="{ 'hidden': showAddForm }">
+  <button class="add-button" (click)="toggleAddForm()">Agregar Producto</button>
+</div>
+
+<div class="search-container" [ngClass]="{ 'hidden': showAddForm }">
+  <input type="text" class="search-input" placeholder="Buscar productos..." [(ngModel)]="searchTerm" (input)="filterProductos()">
+</div>
+
+<div class="container">
+  <div class="table-container" [ngClass]="{ 'hidden': showAddForm }">
+    <table class="products-table">
+      <thead>
+        <tr>
+          <th class="table-header">Imagen</th>
+          <th class="table-header">Nombre</th>
+          <th class="table-header">Categoría</th>
+          <th class="table-header">Tipo</th>
+          <th class="table-header">Condición</th>
+          <th class="table-header">Precio</th>
+          <th class="table-header" colspan="2">Acciones</th>
+        </tr>
+      </thead>
+    </table>
+    <div class="table-body-container">
+      <table class="products-table">
+        <tbody>
+          <tr *ngFor="let product of displayedProductos">
+            <td class="table-cell"><img [src]="product.imagen" alt="{{ product.nombre }}" class="product-image"></td>
+            <td class="table-cell">{{ product.nombre }}</td>
+            <td class="table-cell">{{ product.categoria }}</td>
+            <td class="table-cell">{{ product.tipo }}</td>
+            <td class="table-cell">{{ product.condicion }}</td>
+            <td class="table-cell">{{ product.precio | currency }}</td>
+            <td class="table-cell">
+              <button class="button edit-button" (click)="editProduct(product)">Editar</button>
+            </td>
+            <td class="table-cell">
+              <button class="button delete-button" (click)="deleteProduct(product.id)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination">
+      <button *ngFor="let page of [].constructor(getTotalPages()); let i = index"
+              (click)="changePage(i + 1)"
+              [class.active]="currentPage === i + 1">
+        {{ i + 1 }}
+      </button>
+    </div>
+  </div>
+
+  <div class="form-container" [ngClass]="{ 'hidden': !showAddForm, 'form-visible': showAddForm }">
+    <form class="add-product-form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="newProduct.nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <input type="text" id="descripcion" name="descripcion" [(ngModel)]="newProduct.descripcion" required>
+      </div>
+      <div class="form-group">
+        <label for="categoria">Categoría</label>
+        <select id="categoria" name="categoria" [(ngModel)]="newProduct.categoria" required>
+          <option value="joyeria">Joyería</option>
+          <option value="tecnologia">Tecnología</option>
+          <option value="otros">Otros</option>
+          <option value="celulares">Celulares</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="precio">Precio</label>
+        <input type="number" id="precio" name="precio" [(ngModel)]="newProduct.precio" required>
+      </div>
+      <div class="form-group">
+        <label for="marca">Marca</label>
+        <input type="text" id="marca" name="marca" [(ngModel)]="newProduct.marca">
+      </div>
+      <div class="form-group">
+        <label for="condicion">Condición</label>
+        <select id="condicion" name="condicion" [(ngModel)]="newProduct.condicion">
+          <option value="Nuevo">Nuevo</option>
+          <option value="Usado">Usado</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="ubicacion">Ubicación</label>
+        <input type="text" id="ubicacion" name="ubicacion" [(ngModel)]="newProduct.ubicacion">
+      </div>
+      <div class="form-group">
+        <label for="imagen">Imagen URL</label>
+        <input type="url" id="imagen" name="imagen" [(ngModel)]="newProduct.imagen">
+      </div>
+      <div class="form-group">
+        <label for="fecha_vencimiento">Fecha de Vencimiento</label>
+        <input type="date" id="fecha_vencimiento" name="fecha_vencimiento" [(ngModel)]="newProduct.fecha_vencimiento">
+      </div>
+      <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <select id="tipo" name="tipo" [(ngModel)]="newProduct.tipo" required>
+          <option value="empeño">Empeño</option>
+          <option value="venta">Venta</option>
+        </select>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="submit-button">{{ isUpdating ? 'Actualizar' : 'Agregar' }} Producto</button>
+        <button type="button" (click)="toggleAddForm()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
